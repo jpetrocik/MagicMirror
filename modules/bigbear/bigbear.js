@@ -45,7 +45,7 @@ Module.register("bigbear", {
 				return "Road Conditions"
 			default:
 				return "";
-			}
+		}
 	},
 
 	getTemplate: function () {
@@ -54,7 +54,7 @@ Module.register("bigbear", {
 				return "lifts.njk"
 			default:
 				return "road.njk"
-			}
+		}
 	},
 
 	getTemplateData: function () {
@@ -62,8 +62,8 @@ Module.register("bigbear", {
 			case "lifts":
 				return { liftStatus: this.liftStatus };
 			default:
-				return { roadConditions: this.roadConditions} ;
-			}
+				return { roadConditions: this.roadConditions };
+		}
 	},
 
 	updateAvailable: function () {
@@ -74,8 +74,8 @@ Module.register("bigbear", {
 		this.nunjucksEnvironment().addFilter(
 			"image",
 			function (status) {
-				switch (status){
-					case "Open": 
+				switch (status) {
+					case "Open":
 						return "trail_status-02.png";
 					case "Closed":
 						return "trail_status-07.png";
@@ -85,9 +85,9 @@ Module.register("bigbear", {
 						return "trail_status-16.png";
 					case "Maintenance":
 						return "trail_status-12.png";
-						case "Soon":
-							return "trail_status-15.png";
-						default:
+					case "Soon":
+						return "trail_status-15.png";
+					default:
 						return status + ".png";
 				}
 			}.bind(this)
@@ -96,8 +96,8 @@ Module.register("bigbear", {
 		this.nunjucksEnvironment().addFilter(
 			"logo",
 			function (status) {
-				switch (status){
-					case "Bear Mountain": 
+				switch (status) {
+					case "Bear Mountain":
 						return "bearmtn_sm.png";
 					default:
 						return "summit_sm.png";
