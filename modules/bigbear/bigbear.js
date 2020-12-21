@@ -15,10 +15,6 @@ Module.register("bigbear", {
 	roadConditions: {},
 	liftStatus: {},
 
-	getScripts: function () {
-		return ["bigbearprovider.js"];
-	},
-
 	start: function () {
 		this.sendSocketNotification("ADD_RESORT", {
 			resort: "BigBearMountainResorts",

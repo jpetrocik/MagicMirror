@@ -10,7 +10,7 @@ Module.register("weather", {
 	// Default module config.
 	defaults: {
 		weatherProvider: "openweathermap",
-		roundTemp: false,
+		roundTemp: true,
 		type: "current", // current, forecast, daily (equivalent to forecast), hourly (only with OpenWeatherMap /onecall endpoint)
 
 		lat: 0,
@@ -188,16 +188,16 @@ Module.register("weather", {
 				if (this.config.timeFormat !== 24) {
 					if (this.config.showPeriod) {
 						if (this.config.showPeriodUpper) {
-							return date.format("h:mm A");
+							return date.format("hA");
 						} else {
-							return date.format("h:mm a");
+							return date.format("ha");
 						}
 					} else {
-						return date.format("h:mm");
+						return date.format("h");
 					}
 				}
 
-				return date.format("HH:mm");
+				return date.format("HH");
 			}.bind(this)
 		);
 
