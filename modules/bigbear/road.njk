@@ -1,0 +1,17 @@
+<!--
+	Use ` | safe` to allow html tages within the text string.
+	https://mozilla.github.io/nunjucks/templating.html#autoescaping
+-->
+{% if roadConditions %}
+<table class="{{ config.tableClass }} small">
+	{% for road, condition in roadConditions %}
+	<tr {% if config.colored %}class="colored"{% endif %} >
+		<td><img src="modules/bigbear/ca{{ road | lower }}_sm.png"/></td><td>{{ condition | capitalize }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+    <div class="dimmed light small">
+        {{ "LOADING" | translate | safe }}
+    </div>
+{% endif %}

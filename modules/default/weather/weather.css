@@ -16,7 +16,7 @@
 
 .weather .day {
   padding-left: 0;
-  padding-right: 25px;
+  text-align: left;
 }
 
 .weather .weather-icon {
@@ -44,4 +44,8 @@
 
 .weather tr.colored .max-temp {
   color: #ff8e99;
+}
+
+.weather .current {
+  width: fit-content;
 }

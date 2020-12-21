@@ -3,24 +3,18 @@
         {% set hourly = weatherData.hours %}
     {% endif %}
     {% set numSteps = hourly | calcNumEntries %}
-    {% set currentStep = 0 %}
+    {% set hours = hourly.slice(0, numSteps) %}
     <table class="{{ config.tableClass }}">
-        {% set hours = hourly.slice(0, numSteps) %}
+        <tr {% if config.colored %}class="colored"{% endif %} >
         {% for hour in hours %}
-            <tr {% if config.colored %}class="colored"{% endif %} {% if config.fade %}style="opacity: {{ currentStep | opacity(numSteps) }};"{% endif %}>
-                <td class="day">{{ hour.date | formatTime }}</td>
-                <td class="bright weather-icon"><span class="wi weathericon wi-{{ hour.weatherType }}"></span></td>
-                <td class="align-right bright">
-                    {{ hour.temperature | roundValue | unit("temperature") }}
-                </td>
-                {% if config.showPrecipitationAmount %}
-                    <td class="align-right bright precipitation">
-                        {{ hour.precipitation | unit("precip") }}
-                    </td>
-                {% endif %}
-            </tr>
-            {% set currentStep = currentStep + 1 %}
+            <td class="bright weather-icon">{{ hour.temperature | roundValue | unit("temperature") }} <span class="wi weathericon wi-{{ hour.weatherType }}"></span></td>
         {% endfor %}
+        </tr>
+        <tr {% if config.colored %}class="colored"{% endif %} >
+        {% for hour in hours %}
+            <td class="day">{{ hour.date | formatTime }}</td>
+        {% endfor %}
+        </tr>
     </table>
 {% else %}
     <div class="dimmed light small">

@@ -1,0 +1,36 @@
+<!--
+	Use ` | safe` to allow html tages within the text string.
+	https://mozilla.github.io/nunjucks/templating.html#autoescaping
+-->
+
+{% if liftStatus %}
+	<table class="{{ config.tableClass }} small">
+			<tr>
+				<td><img src="modules/bigbear/{{ "Open" | image }}"/> Open</td>
+				<td><img src="modules/bigbear/{{ "Soon" | image }}"/> Opens Soon</td>
+				<td><img src="modules/bigbear/{{ "Expected" | image }}"/> Expected</td>
+			</tr>
+			<tr>
+				<td><img src="modules/bigbear/{{ "Hold" | image }}"/> Weather Hold</td>
+				<td><img src="modules/bigbear/{{ "Maintenance" | image }}"/> Maintenance</td>
+				<td><img src="modules/bigbear/{{ "Closed" | image }}"/> Closed</td>
+			</tr>
+	</table>
+	{% for area, status in liftStatus %}
+		<div style="float:right;padding-right:20px;">
+		<header class="module-header" style="display: block;"><img src="modules/bigbear/{{ area | logo }}"> {{ area }} Lift Status</header>
+		<table class="{{ config.tableClass }} small">
+			{% for lift, state in status %}
+				<tr {% if config.colored %}class="colored"{% endif %} >
+					<td><img src="modules/bigbear/{{ state | image }}"/></td><td>{{ lift }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		</div>
+	{% endfor %}
+	<div style="clear:both"></div>
+{% else %}
+    <div class="dimmed light small">
+        {{ "LOADING" | translate | safe }}
+    </div>
+{% endif %}

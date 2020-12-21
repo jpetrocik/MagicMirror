@@ -76,12 +76,7 @@ Module.register("weather", {
 
 	// Override getHeader method.
 	getHeader: function () {
-		if (this.config.appendLocationNameToHeader && this.weatherProvider) {
-			if (this.data.header) return this.data.header + " " + this.weatherProvider.fetchedLocation();
-			else return this.weatherProvider.fetchedLocation();
-		}
-
-		return this.data.header ? this.data.header : "";
+		return ""; //this.data.header ? this.data.header : "";
 	},
 
 	// Start the weather module.
