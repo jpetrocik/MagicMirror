@@ -85,7 +85,7 @@ Module.register("bigbear", {
 						return "trail_status-16.png";
 					case "Maintenance":
 						return "trail_status-12.png";
-					case "Soon":
+                    case "30 Minutes or Less":
 						return "trail_status-15.png";
 					default:
 						return status + ".png";
